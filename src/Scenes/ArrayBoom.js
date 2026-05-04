@@ -41,7 +41,8 @@ class ArrayBoom extends Phaser.Scene {
         // Sound asset from the Kenny Music Jingles pack
         // https://kenney.nl/assets/music-jingles
         // TODO: load sound assets here
-        
+        this.load.audio("sfx_hit", "jingles_HIT13.ogg");
+        this.load.audio("BackgroundMusic", "mondamusic-retro-arcade-game-music-512837.mp3");
     }
 
     create() {
@@ -73,7 +74,10 @@ class ArrayBoom extends Phaser.Scene {
 
 
         // TODO: create sound object(s) here
-
+        this.sound.add("sfx_hit", {
+            rate: 2.0,
+            volume: 0.5
+        });
 
         // Create key objects
         this.left = this.input.keyboard.addKey("A");
@@ -100,8 +104,12 @@ class ArrayBoom extends Phaser.Scene {
         });
 
         // TODO: create background music object
+        this.backgroundMusic = this.sound.add('BackgroundMusic')
         // TODO: start playing background music
-
+        this.backgroundMusic.play({
+            loop:true,
+            volume: 1.0
+        });
     }
 
     update(time, delta) {
@@ -159,6 +167,7 @@ class ArrayBoom extends Phaser.Scene {
                 this.myScore += my.sprite.hippo.scorePoints;
                 this.updateScore();
                 // TODO: Play collision sound
+                this.sound.play("sfx_hit");
 
                 // Have new hippo appear after end of animation
                 this.puff.on(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
