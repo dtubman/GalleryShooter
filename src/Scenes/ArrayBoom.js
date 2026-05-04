@@ -41,6 +41,7 @@ class ArrayBoom extends Phaser.Scene {
         // Sound asset from the Kenny Music Jingles pack
         // https://kenney.nl/assets/music-jingles
         // TODO: load sound assets here
+        
     }
 
     create() {
