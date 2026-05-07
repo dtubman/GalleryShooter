@@ -68,6 +68,7 @@ class Scene1 extends Phaser.Scene {
 
         this.load.audio("sfx_hit", "jingles_HIT13.ogg");
         this.load.audio("BackgroundMusic", "mondamusic-retro-arcade-game-music-512837.mp3");
+        this.load.audio("sfx_player_hit", "impactMetal_light_000.ogg");
     }
 
     create() {
@@ -99,6 +100,12 @@ class Scene1 extends Phaser.Scene {
             rate: 2.0,
             volume: 0.5
         });
+
+        this.sfx_player_hit = this.sound.add("sfx_player_hit", {
+            rate: 1.0,
+            volume: 0.8
+        });
+
 
         this.sound.add("sfx_hit", {
             rate: 2.0,
@@ -355,6 +362,7 @@ initGame() {
 }
 
 takeDamage() {
+    this.sfx_player_hit.play();
     this.playerHealth--;
     this.my.text.health.setText("Health: " + this.playerHealth);
 
