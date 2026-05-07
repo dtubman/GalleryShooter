@@ -202,6 +202,10 @@ initGame() {
         this.gameOverContainer.setVisible(false);
     }
     
+    if (!this.backgroundMusic.isPlaying) {
+    this.backgroundMusic.play();
+    }
+
     // Start first wave
     this.spawnWave(this.currentWave);
     }
